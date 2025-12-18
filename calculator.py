@@ -3,33 +3,39 @@ Python GUI Calculator
 Built using Tkinter
 """
 
-from tkinter import *
+from tkinter import * #Bring all Tkinter tools into this file
 
 # Create window
-window = Tk()
-window.title("Python Calculator")
-window.geometry("350x500")
-window.config(bg="black")
+window = Tk() # Creates a blank window
+window.title("Python Calculator") # Sets the title (top bar text).
+window.geometry("350x500") # Sets window width = 350 px, height = 500 px
+window.config(bg="black") # Sets background color to black
 
 # Display
-display = Entry(
-    window,
-    font=("Arial", 22),
-    bg="#2b1d0e",
-    fg="gold",
-    justify="right"
+display = Entry( # Entry - one-line text box
+    window, # window - placed inside main window
+    font=("Arial", 22), # font - text style and size
+    bg="#2b1d0e", # bg - background color (golden-brown)
+    fg="gold", # fg - text color (gold)
+    justify="right" # justify="right" - numbers align right (like real calculator)
 )
-display.grid(row=0, column=0, columnspan=4, ipadx=10, ipady=15, padx=10, pady=20)
+display.grid(row=0, # row=0 - first row
+             column=0, # column=0 - first column
+             columnspan=4,  # columnspan=4 - spans across 4 columns
+             ipadx=10,  #ipadx/ipady - inside padding
+             ipady=15,  #ipadx/ipady - inside padding
+             padx=10, #padx/pady - outside spacing
+             pady=20) #padx/pady - outside spacing
 
 # Functions
-def insert_value(value):
-    display.insert(END, value)
+def insert_value(value): # Runs when a button is clicked (if we press a number it appears on the screen)
+    display.insert(END, value) # (value - number or operator clicked) & (END - add value at the end of display)
 
-def clear_display():
-    display.delete(0, END)
+def clear_display(): # Clears everything on the screen (from starting position "0" to last position "END" everything will be cleared)
+    display.delete(0, END) # (0 → starting position) (END → till last character)
 
-def calculate():
-    try:
+def calculate(): # Runs when = is pressed.
+    try: # tells python to run the code and if error happens , dont crash
         result = eval(display.get())
         clear_display()
         display.insert(END, result)
