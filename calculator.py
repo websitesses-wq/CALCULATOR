@@ -36,12 +36,12 @@ def clear_display(): # Clears everything on the screen (from starting position "
 
 def calculate(): # Runs when = is pressed.
     try: # tells python to run the code and if error happens , dont crash
-        result = eval(display.get())
-        clear_display()
-        display.insert(END, result)
-    except:
-        clear_display()
-        display.insert(END, "Error")
+        result = eval(display.get()) # Reads the screen text and calculates it
+        clear_display() # Clears old text and shows result
+        display.insert(END, result) # Clears old text and shows result
+    except: #this whole shows error when error occurs instead of crashing 
+        clear_display() ## Clears old text
+        display.insert(END, "Error") # shows error
 
 def square():
     value = float(display.get())
